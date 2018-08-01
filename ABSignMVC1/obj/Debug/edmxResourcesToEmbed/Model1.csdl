@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ABSignModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Profile">
+    <Key>
+      <PropertyRef Name="ProfileID" />
+    </Key>
+    <Property Name="ProfileID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserNameID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="TestScores" Relationship="Self.FK_TestScores_Profiles" FromRole="Profiles" ToRole="TestScores" />
+  </EntityType>
+  <EntityType Name="Sign">
+    <Key>
+      <PropertyRef Name="SignID" />
+    </Key>
+    <Property Name="SignID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Text" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FancyText" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TestScore">
+    <Key>
+      <PropertyRef Name="TestScoreID" />
+    </Key>
+    <Property Name="TestScoreID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Score" Type="Int32" />
+    <Property Name="ProfileID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Profile" Relationship="Self.FK_TestScores_Profiles" FromRole="TestScores" ToRole="Profiles" />
+  </EntityType>
+  <Association Name="FK_TestScores_Profiles">
+    <End Role="Profiles" Type="Self.Profile" Multiplicity="1" />
+    <End Role="TestScores" Type="Self.TestScore" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profiles">
+        <PropertyRef Name="ProfileID" />
+      </Principal>
+      <Dependent Role="TestScores">
+        <PropertyRef Name="ProfileID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ABSignEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Profiles" EntityType="Self.Profile" />
+    <EntitySet Name="Signs" EntityType="Self.Sign" />
+    <EntitySet Name="TestScores" EntityType="Self.TestScore" />
+    <AssociationSet Name="FK_TestScores_Profiles" Association="Self.FK_TestScores_Profiles">
+      <End Role="Profiles" EntitySet="Profiles" />
+      <End Role="TestScores" EntitySet="TestScores" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
