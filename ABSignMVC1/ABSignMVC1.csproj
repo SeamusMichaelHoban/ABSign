@@ -196,6 +196,9 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProfilesController.cs" />
+    <Compile Include="Controllers\SignsController.cs" />
+    <Compile Include="Controllers\TestScoresController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -343,6 +346,21 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Profiles\Create.cshtml" />
+    <Content Include="Views\Profiles\Delete.cshtml" />
+    <Content Include="Views\Profiles\Details.cshtml" />
+    <Content Include="Views\Profiles\Edit.cshtml" />
+    <Content Include="Views\Profiles\Index.cshtml" />
+    <Content Include="Views\Signs\Create.cshtml" />
+    <Content Include="Views\Signs\Delete.cshtml" />
+    <Content Include="Views\Signs\Details.cshtml" />
+    <Content Include="Views\Signs\Edit.cshtml" />
+    <Content Include="Views\Signs\Index.cshtml" />
+    <Content Include="Views\TestScores\Create.cshtml" />
+    <Content Include="Views\TestScores\Delete.cshtml" />
+    <Content Include="Views\TestScores\Details.cshtml" />
+    <Content Include="Views\TestScores\Edit.cshtml" />
+    <Content Include="Views\TestScores\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

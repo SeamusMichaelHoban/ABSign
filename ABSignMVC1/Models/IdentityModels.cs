@@ -29,5 +29,7 @@ namespace ABSignMVC1.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<ABSignMVC1.Sign> Signs { get; set; }
     }
 }
